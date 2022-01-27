@@ -1,0 +1,19 @@
+<view class="container">
+  <view class="get_face">
+    <canvas canvas-id="myAvatar" class="canvas"></canvas>
+    <button wx:if="{{!userInfo}}" bindtap="getUserProfile" class="get_btn">点击获取微信头像</button>
+  </view>
+  <view class="mask_list">
+    <view wx:for="{{mask_list}}" wx:key="item" bindtap="applyMask" data-id="{{item.id}}" class="mask_item {{now_mask == item.id?'on':''}}">
+      <image src="{{'../../assets/img/mask0'+item.id+'.png'}}" class="mask_img" mode="widthFix"></image>
+      <text>{{item.text}}</text>
+    </view>
+  </view>
+  <view class="download" bindtap="canvasToTempFile">下载头像</view>
+
+  <view class="footer">
+    <view class="footer_text" bindtap="yinsi">隐私说明</view>
+    <button open-type="feedback" class="footer_text" bindtap="feedback">意见反馈</button>
+    <button open-type="share" class="footer_text" bindtap="feedback">分享好友</button>
+  </view>
+</view>
